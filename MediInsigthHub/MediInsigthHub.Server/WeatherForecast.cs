@@ -1,4 +1,4 @@
-namespace MediInsightHubAPI
+namespace MediInsigthHub.Server
 {
     public class WeatherForecast
     {
