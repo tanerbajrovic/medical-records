@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace MediInsigthHub.Server.Controllers
+namespace MediInsigthHubAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

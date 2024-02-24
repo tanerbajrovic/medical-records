@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediInsigthHubAPI", "MediInsigthHubAPI.csproj", "{390543A3-A879-418C-A821-A9C92A37B6CE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{390543A3-A879-418C-A821-A9C92A37B6CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{390543A3-A879-418C-A821-A9C92A37B6CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{390543A3-A879-418C-A821-A9C92A37B6CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{390543A3-A879-418C-A821-A9C92A37B6CE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1A5E42EF-17FD-4DB4-B41C-679C7A6C6CB1}
+	EndGlobalSection
+EndGlobal
