@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MediInsigthHubAPI.Utilities.TokenUtility;
 
+DotNetEnv.Env.Load();
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -71,7 +72,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=10.10.100.107;Initial Catalog=core_live;User Id=sa;Password=NewPassword!; TrustServerCertificate=True"));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
