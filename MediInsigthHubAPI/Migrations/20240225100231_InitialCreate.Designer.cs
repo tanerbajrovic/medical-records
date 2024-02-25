@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MediInsigthHubAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240225023851_InitialCreate")]
+    [Migration("20240225100231_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -24,6 +24,41 @@ namespace MediInsigthHubAPI.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("MediInsigthHubAPI.Models.MedicalRecord", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnOrder(0);
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("ERRBC")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Gender")
+                        .HasColumnType("int");
+
+                    b.Property<double>("GranPercentage")
+                        .HasColumnType("float");
+
+                    b.Property<int>("HGB")
+                        .HasColumnType("int");
+
+                    b.Property<double>("LEWBC")
+                        .HasColumnType("float");
+
+                    b.Property<double>("LimfPercentage")
+                        .HasColumnType("float");
+
+                    b.Property<double>("MidPercentage")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("mdMedicalRecords", (string)null);
+                });
 
             modelBuilder.Entity("MediInsigthHubAPI.Models.TokenValidity", b =>
                 {
@@ -128,7 +163,7 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6d62613a-0ef5-4aa7-b144-f2417133ddea",
+                            Id = "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0",
                             AccessFailedCount = 0,
                             Address = "Tamo negdje 1",
                             ConcurrencyStamp = "1",
@@ -142,13 +177,13 @@ namespace MediInsigthHubAPI.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==",
                             PhoneNumber = "061112223",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "c9fb3410-41c3-462f-b197-b54defbbce4e",
+                            SecurityStamp = "027af98f-dd2f-49e9-9622-935b756bab9d",
                             TwoFactorEnabled = false,
                             UserName = "kfejzic"
                         },
                         new
                         {
-                            Id = "c7a54cc3-feba-4c5e-b835-4c0abacc28fd",
+                            Id = "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66",
                             AccessFailedCount = 0,
                             Address = "Tamo negdje 1",
                             ConcurrencyStamp = "1",
@@ -162,7 +197,7 @@ namespace MediInsigthHubAPI.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==",
                             PhoneNumber = "063445556",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "8388ad1f-c553-4ecd-a39a-5e3d777cf65e",
+                            SecurityStamp = "b8926f2a-14f2-49db-9cb8-d2f3cf514daa",
                             TwoFactorEnabled = false,
                             UserName = "adminUser"
                         });
@@ -197,14 +232,14 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f25bf1b0-ebc5-4b7f-8ebf-81e8c18ebafd",
+                            Id = "686c86cc-662f-40ac-b6cf-d464251fb607",
                             ConcurrencyStamp = "1",
                             Name = "Entry",
                             NormalizedName = "ENTRY"
                         },
                         new
                         {
-                            Id = "b9761a18-2ac9-4658-afc5-6a78ed533e85",
+                            Id = "f2ac5020-ae34-4026-a7a4-1b7a6313b132",
                             ConcurrencyStamp = "2",
                             Name = "Viewer",
                             NormalizedName = "VIEWER"
@@ -300,13 +335,13 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "6d62613a-0ef5-4aa7-b144-f2417133ddea",
-                            RoleId = "b9761a18-2ac9-4658-afc5-6a78ed533e85"
+                            UserId = "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0",
+                            RoleId = "f2ac5020-ae34-4026-a7a4-1b7a6313b132"
                         },
                         new
                         {
-                            UserId = "c7a54cc3-feba-4c5e-b835-4c0abacc28fd",
-                            RoleId = "f25bf1b0-ebc5-4b7f-8ebf-81e8c18ebafd"
+                            UserId = "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66",
+                            RoleId = "686c86cc-662f-40ac-b6cf-d464251fb607"
                         });
                 });
 

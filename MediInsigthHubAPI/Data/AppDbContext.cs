@@ -20,6 +20,8 @@ namespace MediInsigthHubAPI.Data
         // Seed Roles
 
         public DbSet<TokenValidity> TokenValidities { get; set; }
+        public virtual DbSet<MedicalRecord> MedicalRecords { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -30,6 +32,7 @@ namespace MediInsigthHubAPI.Data
             builder.Entity<IdentityUserLogin<string>>(entity => { entity.ToTable("usrUserLogins"); });
             builder.Entity<IdentityUserToken<string>>(entity => { entity.ToTable("usrUserTokens"); });
             builder.Entity<TokenValidity>(entity => { entity.ToTable("usrTokenValidities"); });
+            builder.Entity<MedicalRecord>(entity => { entity.ToTable("mdMedicalRecords"); });
 
             Seed(builder);
         }

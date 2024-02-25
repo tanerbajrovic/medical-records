@@ -12,9 +12,9 @@ function App() {
 					<Route
 						path='/'
 						element={
-							<ProtectedRoute>
-								<HomePage />
-							</ProtectedRoute>
+							// <ProtectedRoute>
+							<HomePage />
+							// </ProtectedRoute>
 						}
 					/>
 					{/* CHANGE THIS TO REDIRECT IF TOKEN IS EXPIRED OR USER IS NOT LOGGED IN */}

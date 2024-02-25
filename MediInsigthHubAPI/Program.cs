@@ -18,6 +18,7 @@ var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 // Add services to the container.
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IMedicalRecordService, MedicalRecordService>();
 builder.Services.AddScoped<TokenUtilities>();
 
 builder.Services.AddControllers();
@@ -70,7 +71,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=localhost;Initial Catalog=core_live;User Id=sa;Password=Firewall2024; TrustServerCertificate=True"));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer("Data Source=10.10.100.107;Initial Catalog=core_live;User Id=sa;Password=NewPassword!; TrustServerCertificate=True"));
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
