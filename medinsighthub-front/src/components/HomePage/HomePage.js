@@ -240,7 +240,7 @@ const HomePage = () => {
 					color: 'text.primary',
 				},
 			}}>
-			<Grid container justifyContent="space-between" alignItems="center">
+			<Grid container justifyContent='space-between' alignItems='center'>
 				<Box>
 					<h1>MedInsightHUB</h1>
 				</Box>
@@ -249,6 +249,15 @@ const HomePage = () => {
 				</Box>
 			</Grid>
 			<DataGrid
+				sx={{
+					boxShadow: 5,
+					border: 3,
+					borderColor: 'primary.light',
+					'& .MuiDataGrid-cell:hover': {
+						color: 'primary.main',
+					},
+					backgroundColor: 'white',
+				}}
 				rows={rows}
 				columns={columns}
 				editMode='row'

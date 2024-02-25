@@ -38,5 +38,8 @@
 }
 
 body {
-  padding: 10px;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
 }
