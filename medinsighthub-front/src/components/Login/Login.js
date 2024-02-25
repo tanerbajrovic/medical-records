@@ -1,5 +1,5 @@
 import { Alert, TextField, Button, Container, Box, Typography } from '@mui/material';
-import { getValidateToken, login } from '../../services/userService';
+import { login } from '../../services/userService';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -16,9 +16,6 @@ const LoginForm = props => {
 		login(request)
 			.then(res => {
 				localStorage.setItem('medhub-token', res.data.token);
-				getValidateToken(res.data.token).then(response => {
-					props.setRole(response.data.roles[0]);
-				});
 				navigate('/');
 			})
 			.catch(err => {
@@ -51,6 +48,7 @@ const LoginForm = props => {
 					onChange={e => setEmail(e.target.value)}
 				/>
 				<TextField
+					type='password'
 					margin='normal'
 					name='password'
 					id='password'

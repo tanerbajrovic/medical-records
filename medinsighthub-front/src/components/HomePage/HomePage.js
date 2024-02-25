@@ -48,7 +48,6 @@ const HomePage = () => {
 
 	useEffect(() => {
 		getAll().then(res => {
-			console.log(res.data);
 			setRows(res.data);
 		});
 
