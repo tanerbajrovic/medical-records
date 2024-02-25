@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import { Grid } from '@mui/material';
 import Button from '@mui/material/Button';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
@@ -239,6 +240,14 @@ const HomePage = () => {
 					color: 'text.primary',
 				},
 			}}>
+			<Grid container justifyContent="space-between" alignItems="center">
+				<Box>
+					<h1>MedInsightHUB</h1>
+				</Box>
+				<Box>
+					<Button onClick={handleLogout}>LOGOUT</Button>
+				</Box>
+			</Grid>
 			<DataGrid
 				rows={rows}
 				columns={columns}
@@ -255,7 +264,6 @@ const HomePage = () => {
 				}}
 				onProcessRowUpdateError={error => console.log(error)}
 			/>
-			<Button onClick={handleLogout}>LOGOUT</Button>
 		</Box>
 	);
 };
