@@ -15,7 +15,9 @@ import {
 } from '@mui/x-data-grid';
 import { randomId } from '@mui/x-data-grid-generator';
 import { useEffect } from 'react';
-import { getAll, get, deleteMedicalRecord, update, create } from '../../services/medicalRecordService';
+import { getAll, deleteMedicalRecord, update, create } from '../../services/medicalRecordService';
+import { getValidateToken } from '../../services/userService';
+import { useNavigate } from 'react-router-dom';
 
 const EditToolbar = props => {
 	const { setRows, setRowModesModel } = props;
@@ -31,7 +33,7 @@ const EditToolbar = props => {
 
 	return (
 		<GridToolbarContainer>
-			<Button color='primary' startIcon={<AddIcon />} onClick={handleClick}>
+			<Button color='primary' startIcon={<AddIcon />} onClick={handleClick} disabled={props.role === 'Viewer'}>
 				Add record
 			</Button>
 		</GridToolbarContainer>
@@ -41,11 +43,17 @@ const EditToolbar = props => {
 const HomePage = () => {
 	const [rows, setRows] = React.useState([]);
 	const [rowModesModel, setRowModesModel] = React.useState({});
+	const [role, setRole] = React.useState(null);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		getAll().then(res => {
 			console.log(res.data);
 			setRows(res.data);
+		});
+
+		getValidateToken(localStorage.getItem('medhub-token')).then(response => {
+			setRole(response.data.roles[0]);
 		});
 	}, []);
 
@@ -81,8 +89,8 @@ const HomePage = () => {
 	};
 
 	const processRowUpdate = newRow => {
-		if (newRow.isNew) create(newRow);
-		else update(updatedRow);
+		if (newRow?.isNew) create(newRow);
+		else update(newRow);
 
 		const updatedRow = { ...newRow, isNew: false };
 		setRows(rows.map(row => (row.id === newRow.id ? updatedRow : row)));
@@ -93,12 +101,17 @@ const HomePage = () => {
 		setRowModesModel(newRowModesModel);
 	};
 
+	const handleLogout = () => {
+		localStorage.removeItem('medhub-token');
+		navigate('/login');
+	};
+
 	const columns = [
 		{
 			field: 'gender',
 			headerName: 'Gender',
 			width: 80,
-			editable: true,
+			editable: role === 'Entry',
 			type: 'singleSelect',
 			valueOptions: ['1', '0'],
 		},
@@ -109,7 +122,7 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
-			editable: true,
+			editable: role === 'Entry',
 		},
 		{
 			field: 'limfPercentage',
@@ -118,7 +131,7 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
-			editable: true,
+			editable: role === 'Entry',
 		},
 		{
 			field: 'midPercentage',
@@ -127,7 +140,7 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
-			editable: true,
+			editable: role === 'Entry',
 		},
 		{
 			field: 'granPercentage',
@@ -136,7 +149,7 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
-			editable: true,
+			editable: role === 'Entry',
 		},
 		{
 			field: 'hgb',
@@ -145,7 +158,7 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
-			editable: true,
+			editable: role === 'Entry',
 		},
 		{
 			field: 'errbc',
@@ -154,7 +167,15 @@ const HomePage = () => {
 			width: 80,
 			align: 'left',
 			headerAlign: 'left',
+			editable: role === 'Entry',
+		},
+		{
+			field: 'category',
+			headerName: 'Category',
+			width: 120,
 			editable: true,
+			type: 'singleSelect',
+			valueOptions: ['Laka', 'Srednja', 'Teska'],
 		},
 		{
 			field: 'actions',
@@ -185,16 +206,24 @@ const HomePage = () => {
 					];
 				}
 
-				return [
+				let resultArray = [];
+
+				resultArray.push(
 					<GridActionsCellItem
 						icon={<EditIcon />}
 						label='Edit'
 						className='textPrimary'
 						onClick={handleEditClick(id)}
 						color='inherit'
-					/>,
-					<GridActionsCellItem icon={<DeleteIcon />} label='Delete' onClick={handleDeleteClick(id)} color='inherit' />,
-				];
+					/>
+				);
+
+				if (role === 'Entry')
+					resultArray.push(
+						<GridActionsCellItem icon={<DeleteIcon />} label='Delete' onClick={handleDeleteClick(id)} color='inherit' />
+					);
+
+				return resultArray;
 			},
 		},
 	];
@@ -223,9 +252,11 @@ const HomePage = () => {
 					toolbar: EditToolbar,
 				}}
 				slotProps={{
-					toolbar: { setRows, setRowModesModel },
+					toolbar: { setRows, setRowModesModel, role },
 				}}
+				onProcessRowUpdateError={error => console.log(error)}
 			/>
+			<Button onClick={handleLogout}>LOGOUT</Button>
 		</Box>
 	);
 };

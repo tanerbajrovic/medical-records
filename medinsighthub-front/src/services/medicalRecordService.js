@@ -6,6 +6,7 @@ export function getAll() {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
+			Authorization: 'Bearer ' + localStorage.getItem('medhub-token'),
 		},
 	});
 }
@@ -16,7 +17,7 @@ export function create(data) {
 		data: data,
 		headers: {
 			'Content-Type': 'application/json',
-			// Authorization: 'Bearer ' + localStorage.getItem('token'),
+			Authorization: 'Bearer ' + localStorage.getItem('medhub-token'),
 		},
 	});
 }
@@ -26,7 +27,7 @@ export function deleteMedicalRecord(id) {
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json',
-			// Authorization: 'Bearer ' + localStorage.getItem('token'),
+			Authorization: 'Bearer ' + localStorage.getItem('medhub-token'),
 		},
 	});
 }
@@ -36,7 +37,7 @@ export function get(id) {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json',
-			// Authorization: 'Bearer ' + localStorage.getItem('token'),
+			Authorization: 'Bearer ' + localStorage.getItem('medhub-token'),
 		},
 	});
 }
@@ -47,7 +48,7 @@ export function update(data) {
 		data: data,
 		headers: {
 			'Content-Type': 'application/json',
-			// Authorization: 'Bearer ' + localStorage.getItem('token'),
+			Authorization: 'Bearer ' + localStorage.getItem('medhub-token'),
 		},
 	});
 }

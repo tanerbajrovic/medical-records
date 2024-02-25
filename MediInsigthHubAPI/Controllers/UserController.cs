@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Data;
+using MediInsigthHubAPI.Utilities;
 
 namespace MediInsigthHubAPI.Controllers
 {
@@ -57,6 +58,27 @@ namespace MediInsigthHubAPI.Controllers
                 await _userService.InvalidateToken(token);
 
                 return Ok();
+            }
+            catch (DataException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpGet("validate-token")]
+        public IActionResult ValidateToken([FromQuery] string token)
+        {
+            try
+            {
+                TokenVerificationResult roles = new TokenVerificationResult();
+
+                roles = TokenUtilities.VerifyToken(token);
+
+                return Ok(roles);
             }
             catch (DataException ex)
             {

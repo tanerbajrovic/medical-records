@@ -25,7 +25,8 @@ namespace MediInsigthHubAPI.Migrations
                     MidPercentage = table.Column<double>(type: "float", nullable: false),
                     GranPercentage = table.Column<double>(type: "float", nullable: false),
                     HGB = table.Column<int>(type: "int", nullable: false),
-                    ERRBC = table.Column<double>(type: "float", nullable: false)
+                    ERRBC = table.Column<double>(type: "float", nullable: false),
+                    Category = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -200,8 +201,8 @@ namespace MediInsigthHubAPI.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "686c86cc-662f-40ac-b6cf-d464251fb607", "1", "Entry", "ENTRY" },
-                    { "f2ac5020-ae34-4026-a7a4-1b7a6313b132", "2", "Viewer", "VIEWER" }
+                    { "75bdee29-e3f2-4179-a0ad-69a6611de19c", "1", "Entry", "ENTRY" },
+                    { "a2e7324d-72a5-46fc-afb3-4e0fbd7f5448", "2", "Viewer", "VIEWER" }
                 });
 
             migrationBuilder.InsertData(
@@ -209,8 +210,8 @@ namespace MediInsigthHubAPI.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "AccountNumber", "Address", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "Type", "UserName" },
                 values: new object[,]
                 {
-                    { "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0", 0, null, "Tamo negdje 1", "1", "kfejzic1@etf.unsa.ba", true, "Kenan", "Fejzic", false, null, "KFEJZIC1@ETF.UNSA.BA", "KFEJZIC", "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==", "061112223", true, "027af98f-dd2f-49e9-9622-935b756bab9d", false, null, "kfejzic" },
-                    { "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66", 0, null, "Tamo negdje 1", "1", "admin@gmail.com", true, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMINUSER", "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==", "063445556", true, "b8926f2a-14f2-49db-9cb8-d2f3cf514daa", false, null, "adminUser" }
+                    { "6b907c21-d8c0-49c7-bfc1-ce55b63930fa", 0, null, "Tamo negdje 1", "1", "kfejzic1@etf.unsa.ba", true, "Kenan", "Fejzic", false, null, "KFEJZIC1@ETF.UNSA.BA", "KFEJZIC", "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==", "061112223", true, "b4503417-4907-4f7d-bbcb-57580872cdd8", false, null, "kfejzic" },
+                    { "9be593c7-db45-4f27-bf9e-6c97cff36667", 0, null, "Tamo negdje 1", "1", "admin@gmail.com", true, "Admin", "User", false, null, "ADMIN@GMAIL.COM", "ADMINUSER", "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==", "063445556", true, "9586f413-47c9-4cbe-b520-ea0e95b3aa94", false, null, "adminUser" }
                 });
 
             migrationBuilder.InsertData(
@@ -218,8 +219,8 @@ namespace MediInsigthHubAPI.Migrations
                 columns: new[] { "RoleId", "UserId" },
                 values: new object[,]
                 {
-                    { "f2ac5020-ae34-4026-a7a4-1b7a6313b132", "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0" },
-                    { "686c86cc-662f-40ac-b6cf-d464251fb607", "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66" }
+                    { "a2e7324d-72a5-46fc-afb3-4e0fbd7f5448", "6b907c21-d8c0-49c7-bfc1-ce55b63930fa" },
+                    { "75bdee29-e3f2-4179-a0ad-69a6611de19c", "9be593c7-db45-4f27-bf9e-6c97cff36667" }
                 });
 
             migrationBuilder.CreateIndex(

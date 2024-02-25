@@ -1,9 +1,9 @@
 import { Alert, TextField, Button, Container, Box, Typography } from '@mui/material';
-import { login } from '../../services/userService';
+import { getValidateToken, login } from '../../services/userService';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const LoginForm = () => {
+const LoginForm = props => {
 	const [email, setEmail] = useState(null);
 	const [password, setPassword] = useState(null);
 	const [errorMessage, setErrorMessage] = useState(null);
@@ -13,10 +13,12 @@ const LoginForm = () => {
 		e.preventDefault();
 
 		const request = { email, password };
-		console.log(request);
 		login(request)
 			.then(res => {
 				localStorage.setItem('medhub-token', res.data.token);
+				getValidateToken(res.data.token).then(response => {
+					props.setRole(response.data.roles[0]);
+				});
 				navigate('/');
 			})
 			.catch(err => {

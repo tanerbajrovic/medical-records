@@ -28,7 +28,9 @@ namespace MediInsigthHubAPI.Services
                 MidPercentage = request.MidPercentage,
                 GranPercentage = request.GranPercentage,
                 HGB = request.HGB,
-                ERRBC = request.ERRBC
+                ERRBC = request.ERRBC,
+                Category = request.Category
+                
             };
 
             _context.MedicalRecords.Add(medicalRecord);
@@ -53,6 +55,7 @@ namespace MediInsigthHubAPI.Services
             medicalRecord.GranPercentage = request.GranPercentage;
             medicalRecord.HGB = request.HGB;
             medicalRecord.ERRBC = request.ERRBC;
+            medicalRecord.Category = request.Category;
 
             _context.MedicalRecords.Update(medicalRecord);
             _context.SaveChanges();

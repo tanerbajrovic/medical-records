@@ -10,5 +10,6 @@
         public double GranPercentage { get; set; }
         public int HGB { get; set; }
         public double ERRBC { get; set; }
+        public string Category { get; set; }
     }
 }

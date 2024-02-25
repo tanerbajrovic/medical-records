@@ -31,6 +31,10 @@ namespace MediInsigthHubAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Category")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<double>("ERRBC")
                         .HasColumnType("float");
 
@@ -160,7 +164,7 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0",
+                            Id = "6b907c21-d8c0-49c7-bfc1-ce55b63930fa",
                             AccessFailedCount = 0,
                             Address = "Tamo negdje 1",
                             ConcurrencyStamp = "1",
@@ -174,13 +178,13 @@ namespace MediInsigthHubAPI.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==",
                             PhoneNumber = "061112223",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "027af98f-dd2f-49e9-9622-935b756bab9d",
+                            SecurityStamp = "b4503417-4907-4f7d-bbcb-57580872cdd8",
                             TwoFactorEnabled = false,
                             UserName = "kfejzic"
                         },
                         new
                         {
-                            Id = "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66",
+                            Id = "9be593c7-db45-4f27-bf9e-6c97cff36667",
                             AccessFailedCount = 0,
                             Address = "Tamo negdje 1",
                             ConcurrencyStamp = "1",
@@ -194,7 +198,7 @@ namespace MediInsigthHubAPI.Migrations
                             PasswordHash = "AQAAAAIAAYagAAAAENao66CqvIXroh/6aTaoJ/uThFfjLemBtjLfuiJpP/NoWXkhJO/G8wspnWhjLJx9WQ==",
                             PhoneNumber = "063445556",
                             PhoneNumberConfirmed = true,
-                            SecurityStamp = "b8926f2a-14f2-49db-9cb8-d2f3cf514daa",
+                            SecurityStamp = "9586f413-47c9-4cbe-b520-ea0e95b3aa94",
                             TwoFactorEnabled = false,
                             UserName = "adminUser"
                         });
@@ -229,14 +233,14 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "686c86cc-662f-40ac-b6cf-d464251fb607",
+                            Id = "75bdee29-e3f2-4179-a0ad-69a6611de19c",
                             ConcurrencyStamp = "1",
                             Name = "Entry",
                             NormalizedName = "ENTRY"
                         },
                         new
                         {
-                            Id = "f2ac5020-ae34-4026-a7a4-1b7a6313b132",
+                            Id = "a2e7324d-72a5-46fc-afb3-4e0fbd7f5448",
                             ConcurrencyStamp = "2",
                             Name = "Viewer",
                             NormalizedName = "VIEWER"
@@ -332,13 +336,13 @@ namespace MediInsigthHubAPI.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "6893f5cf-8e0d-4f2c-8e9b-2d87d0508ba0",
-                            RoleId = "f2ac5020-ae34-4026-a7a4-1b7a6313b132"
+                            UserId = "6b907c21-d8c0-49c7-bfc1-ce55b63930fa",
+                            RoleId = "a2e7324d-72a5-46fc-afb3-4e0fbd7f5448"
                         },
                         new
                         {
-                            UserId = "e04caf5d-7f4e-4b3b-a68a-3ce6c6526e66",
-                            RoleId = "686c86cc-662f-40ac-b6cf-d464251fb607"
+                            UserId = "9be593c7-db45-4f27-bf9e-6c97cff36667",
+                            RoleId = "75bdee29-e3f2-4179-a0ad-69a6611de19c"
                         });
                 });
 
