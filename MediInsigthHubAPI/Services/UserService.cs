@@ -43,8 +43,6 @@ namespace MediInsigthHubAPI.Services
 
             if (loginRequest.Email != null)
                 user = await _userManager.FindByEmailAsync(loginRequest.Email);
-            else
-                user = _userManager.Users.FirstOrDefault(u => u.PhoneNumber == loginRequest.Phone);
 
             if (user == null)
                 return new AuthenticationResult
@@ -61,12 +59,6 @@ namespace MediInsigthHubAPI.Services
                     Errors = new[] { "Email/Phone/Password combination mismatch!" }
                 };
             }
-
-            if ((loginRequest.Email != null && !user.EmailConfirmed) || (loginRequest.Phone != null && !user.PhoneNumberConfirmed))
-                return new AuthenticationResult
-                {
-                    Errors = new[] { "Provided email/phone is not confirmed!" }
-                };
 
             var authClaims = await TokenUtilities.GetAuthClaimsAsync(user, _userManager);
 

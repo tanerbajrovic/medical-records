@@ -32,9 +32,6 @@ namespace MediInsigthHubAPI.Controllers
             {
                 var authenticationResult = await _userService.Login(loginRequest);
 
-                if (authenticationResult.TwoFactorEnabled)
-                    return Ok(authenticationResult);
-
                 if (authenticationResult.Success)
                     return Ok(_mapper.Map<AuthenticationResult, AuthSuccessResponse>(authenticationResult));
                 else
