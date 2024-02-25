@@ -70,7 +70,7 @@ builder.Services.AddSwaggerGen(options =>
 });
 builder.Services.AddAutoMapper(typeof(Program));
 
-//builder.Services.AddDbContext<AppDbContext>(options => options.UseMySQL(connectionString));
+builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
 builder.Services.AddIdentity<User, IdentityRole>()
     .AddEntityFrameworkStores<AppDbContext>()
@@ -93,27 +93,27 @@ var app = builder.Build();
 //MIGRATING DATABASE
 using var scope = app.Services.CreateScope();
 
-var services = scope.ServiceProvider;
-var appDbContext = services.GetRequiredService<AppDbContext>();
-appDbContext.Database.Migrate();
+//var services = scope.ServiceProvider;
+//var appDbContext = services.GetRequiredService<AppDbContext>();
+//appDbContext.Database.Migrate();
 
-var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
 
-if (!await roleManager.RoleExistsAsync("Admin"))
-{
-    await roleManager.CreateAsync(new IdentityRole("Admin"));
-}
+//if (!await roleManager.RoleExistsAsync("Admin"))
+//{
+//    await roleManager.CreateAsync(new IdentityRole("Admin"));
+//}
 
-if (!await roleManager.RoleExistsAsync("User"))
-{
-    await roleManager.CreateAsync(new IdentityRole("User"));
-}
+//if (!await roleManager.RoleExistsAsync("User"))
+//{
+//    await roleManager.CreateAsync(new IdentityRole("User"));
+//}
 
-if (!await roleManager.RoleExistsAsync("Restricted"))
-{
-    await roleManager.CreateAsync(new IdentityRole("Restricted"));
-}
+//if (!await roleManager.RoleExistsAsync("Restricted"))
+//{
+//    await roleManager.CreateAsync(new IdentityRole("Restricted"));
+//}
 
 app.UseMiddleware<TokenExpirationHandler>();
 
